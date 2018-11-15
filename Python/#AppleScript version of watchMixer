@@ -1,0 +1,18 @@
+#AppleScript version of watchMixer
+
+
+
+
+set theURL to "http://apple.stackexchange.com/questions/270413/open-a-url-in-chrome-canary-as-incognito"
+
+if application "Google Chrome" is running then
+    tell application "Google Chrome"
+        activate
+        make new window with properties {mode:"incognito"}
+        open location theURL
+    end tell
+else
+    do shell script "open -a 'Google Chrome' --args --incognito " & quoted form of theURL
+end if
+
+tell application "Google Chrome" to activate
